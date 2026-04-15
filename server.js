@@ -3,19 +3,19 @@ const db = require("./db");
 const webpush = require("web-push");
 
 const path = require("path");
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
 const app = express();
 app.use(express.json());
 app.use(express.static("public"));
 
-webpush.setVapidDetails(
-  "mailto:admin@solar.com",
-  "CHAVE_PUBLICA",
-  "CHAVE_PRIVADA"
-);
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// webpush.setVapidDetails(
+// "mailto:admin@solar.com",
+//  "CHAVE_PUBLICA",
+//  "CHAVE_PRIVADA"
+// );
 
 /* DASHBOARD */
 app.get("/dashboard", (req, res) => {
